@@ -1,0 +1,21 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+import 'package:revision_api/model/model_class.dart';
+
+class APIHelper {
+  APIHelper._();
+  static final APIHelper apiHelper = APIHelper._();
+
+  Future<List<Public>> fetchData() async {
+    String api = "https://fakestoreapi.com/products";
+
+    http.Response res = await http.get(Uri.parse(api));
+
+    List allData = jsonDecode(res.body);
+    // List allData = data['entries'];
+    List<Public> response = allData.map((e) => Public.fromJson(e)).toList();
+
+    return response;
+  }
+}
