@@ -4,7 +4,7 @@ import 'package:revision_api/model/model_class.dart';
 
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: RevisionApi(),
     ),
   );
@@ -29,7 +29,7 @@ class _RevisionApiState extends State<RevisionApi> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("API"),
+        title: const Text("API"),
         centerTitle: true,
       ),
       body: FutureBuilder(
@@ -46,15 +46,16 @@ class _RevisionApiState extends State<RevisionApi> {
                 children: [
                   Text(allDetails[i].name),
                   Text(allDetails[i].Descriptions),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                 ],
               );
             });
           }
-          return Center(
-            child: CircularProgressIndicator(),
+          return const Center(
+            child: const CircularProgressIndicator(),
+            //jghjghjghjghjgjughjuujghjgjjhgju
           );
         },
       ),
