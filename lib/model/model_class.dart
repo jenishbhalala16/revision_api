@@ -1,15 +1,24 @@
 class Public {
-  String name;
-  String Descriptions;
+  int id;
+  String email;
+  String firstName;
+  String lastName;
+  String image;
 
   Public({
-    required this.name,
-    required this.Descriptions,
+    required this.image,
+    required this.email,
+    required this.lastName,
+    required this.firstName,
+    required this.id,
   });
   factory Public.fromJson(Map<String, dynamic> json) {
     return Public(
-      name: json["title"],
-      Descriptions: json['description'],
+      image: json["avatar"],
+      email: json["email"],
+      lastName: json["last_name"],
+      firstName: json["first_name"],
+      id: json["id"],
     );
   }
 }

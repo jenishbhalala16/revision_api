@@ -8,12 +8,12 @@ class APIHelper {
   static final APIHelper apiHelper = APIHelper._();
 
   Future<List<Public>> fetchData() async {
-    String api = "https://fakestoreapi.com/products";
+    String api = "https://reqres.in/api/users?page=2";
 
     http.Response res = await http.get(Uri.parse(api));
 
-    List allData = jsonDecode(res.body);
-    // List allData = data['entries'];
+    Map data = jsonDecode(res.body);
+    List allData = data['data'];
     List<Public> response = allData.map((e) => Public.fromJson(e)).toList();
 
     return response;

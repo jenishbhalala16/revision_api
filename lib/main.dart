@@ -41,17 +41,33 @@ class _RevisionApiState extends State<RevisionApi> {
             );
           } else if (snapshot.hasData) {
             List<Public> allDetails = snapshot.data;
-            return ListView.builder(itemBuilder: (BuildContext context, int i) {
-              return Column(
-                children: [
-                  Text(allDetails[i].name),
-                  Text(allDetails[i].Descriptions),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                ],
-              );
-            });
+            return ListView.builder(
+                itemCount: allDetails.length,
+                itemBuilder: (BuildContext context, int i) {
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Text(allDetails[i].id.toString()),
+                        Text(allDetails[i].email),
+                        Text(allDetails[i].firstName),
+                        Text(allDetails[i].lastName),
+                        Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  fit: BoxFit.cover,
+                                  image: NetworkImage(
+                                    allDetails[i].image,
+                                  ))),
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                      ],
+                    ),
+                  );
+                });
           }
           return const Center(
             child: const CircularProgressIndicator(),
